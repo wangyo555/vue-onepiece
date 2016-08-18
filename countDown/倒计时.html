@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html> 
+<head> 
+<title>团购、定时抢购倒计时 </title><script async src="http://c.cnzz.com/core.php"></script> 
+<meta http-equiv="content-type" content="text/html; charset=gb2312" /> 
+<meta name="keywords" content="" /> 
+<meta name="description" content="" /> 
+<script language="JavaScript"> 
+var tms = []; 
+var day = []; 
+var hour = []; 
+var minute = []; 
+var second = []; 
+function takeCount() { 
+setTimeout("takeCount()", 1000); 
+for (var i = 0, j = tms.length; i < j; i++) { 
+//计数减一 
+tms[i] -= 1000; 
+//计算时分秒 
+var days = Math.floor(tms[i] / (1000 * 60 * 60 * 24)); 
+var hours = Math.floor(tms[i] / (1000 * 60 * 60)) % 24; 
+var minutes = Math.floor(tms[i] / (1000 * 60)) % 60; 
+var seconds = Math.floor(tms[i] / 1000) % 60; 
+if (days < 0) 
+days = 0; 
+if (hours < 0) 
+hours = 0; 
+if (minutes < 0) 
+minutes = 0; 
+if (seconds < 0) 
+seconds = 0; 
+//将时分秒插入到html中 
+document.getElementById(day[i]).innerHTML = days; 
+document.getElementById(hour[i]).innerHTML = hours; 
+document.getElementById(minute[i]).innerHTML = minutes; 
+document.getElementById(second[i]).innerHTML = seconds; 
+} 
+} 
+setTimeout("takeCount()", 1000); 
+</script> 
+</head> 
+<body> 
+<div> 
+<ul> 
+<li style="width: 300px;">剩余时间： <span id="d1" style="font-weight: bold">0</span> <span> 
+天 </span><span id="h1" style="font-weight: bold">0</span> <span>小时 </span><span id="m1" 
+style="font-weight: bold">0</span> <span>分 </span><span id="s1" style="font-weight: bold"> 
+0</span> <span>秒</span></li> 
+<script type="text/javascript"> 
+tms[tms.length] = "168935343345"; 
+day[day.length] = "d1"; 
+hour[hour.length] = "h1"; 
+minute[minute.length] = "m1"; 
+second[second.length] = "s1"; 
+</script> 
+<li style="width: 300px;">剩余时间： <span id="d2" style="font-weight: bold">0</span> <span> 
+天 </span><span id="h2" style="font-weight: bold">0</span> <span>小时 </span><span id="m2" 
+style="font-weight: bold">0</span> <span>分 </span><span id="s2" style="font-weight: bold"> 
+0</span> <span>秒</span></li> 
+<script type="text/javascript"> 
+tms[tms.length] = "1689353433455"; 
+day[day.length] = "d2"; 
+hour[hour.length] = "h2"; 
+minute[minute.length] = "m2"; 
+second[second.length] = "s2"; 
+</script> 
+</ul> 
+</div> 
+</body> 
+</html> 
