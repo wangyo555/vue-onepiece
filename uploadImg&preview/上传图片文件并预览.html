@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传图片文件并预览</title>
+</head>
+<body>
+	<input type="file" id="file_input">
+
+	<script>
+	var input = document.getElementById('file_input');
+	var imgType = /image.*/;
+	var getOnloadFunc = function(aImg){
+		return function(evt){
+			aImg.src = evt.target.result;
+		}
+	}
+	input.addEventListener("change", function(evt){
+		for(var i = 0, numFiles = this.files.length; i<numFiles; i++){
+			var file = this.files[i];
+			if(!file.type.match(imgType)){
+				continue;
+			}
+
+		var img = document.createElement("img");
+		document.body.appendChild(img);
+
+		var reader = new FileReader();
+		reader.onload = getOnloadFunc(img);
+		reader.readAsDataURL(file);
+		}
+	})
+
+	</script>
+
+
+</body>
+</html>
