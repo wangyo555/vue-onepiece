@@ -1,70 +1,43 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!doctype html> 
 <html> 
 <head> 
-<title>团购、定时抢购倒计时 </title><script async src="http://c.cnzz.com/core.php"></script> 
-<meta http-equiv="content-type" content="text/html; charset=gb2312" /> 
-<meta name="keywords" content="" /> 
-<meta name="description" content="" /> 
-<script language="JavaScript"> 
-var tms = []; 
-var day = []; 
-var hour = []; 
-var minute = []; 
-var second = []; 
-function takeCount() { 
-setTimeout("takeCount()", 1000); 
-for (var i = 0, j = tms.length; i < j; i++) { 
-//计数减一 
-tms[i] -= 1000; 
-//计算时分秒 
-var days = Math.floor(tms[i] / (1000 * 60 * 60 * 24)); 
-var hours = Math.floor(tms[i] / (1000 * 60 * 60)) % 24; 
-var minutes = Math.floor(tms[i] / (1000 * 60)) % 60; 
-var seconds = Math.floor(tms[i] / 1000) % 60; 
-if (days < 0) 
-days = 0; 
-if (hours < 0) 
-hours = 0; 
-if (minutes < 0) 
-minutes = 0; 
-if (seconds < 0) 
-seconds = 0; 
-//将时分秒插入到html中 
-document.getElementById(day[i]).innerHTML = days; 
-document.getElementById(hour[i]).innerHTML = hours; 
-document.getElementById(minute[i]).innerHTML = minutes; 
-document.getElementById(second[i]).innerHTML = seconds; 
-} 
-} 
-setTimeout("takeCount()", 1000); 
-</script> 
+<meta charset="utf-8"> 
+ <title>js setTimeout 倒计时示例</title>
 </head> 
 <body> 
-<div> 
-<ul> 
-<li style="width: 300px;">剩余时间： <span id="d1" style="font-weight: bold">0</span> <span> 
-天 </span><span id="h1" style="font-weight: bold">0</span> <span>小时 </span><span id="m1" 
-style="font-weight: bold">0</span> <span>分 </span><span id="s1" style="font-weight: bold"> 
-0</span> <span>秒</span></li> 
+<DIV id="CountMsg" class="HotDate"> 
+<span id="t_d">00天</span> 
+<span id="t_h">00时</span> 
+<span id="t_m">00分</span> 
+<span id="t_s">00秒</span> 
+</DIV> 
 <script type="text/javascript"> 
-tms[tms.length] = "168935343345"; 
-day[day.length] = "d1"; 
-hour[hour.length] = "h1"; 
-minute[minute.length] = "m1"; 
-second[second.length] = "s1"; 
+var EndTime= new Date('2016/9/1 18:48:00'); //截止时间 
+var NowTime = new Date(); 	//开始时间
+var t =EndTime.getTime() - NowTime.getTime(); 	//时间差的毫秒数
+function getRTime(){ 
+
+	var d=Math.floor(t/(1000*60*60*24)); 	//计算出相差天数
+	var d_rest=t%(1000*60*60*24);	//计算天数后的剩余秒数
+	var h=Math.floor(d_rest/(1000*60*60));	//计算小时
+		h_rest=d_rest%(1000*60*60)	//计算小时后的剩余秒数
+	var m=Math.floor(h_rest/1000/60);	//计算分钟
+		m_rest=h_rest%(1000*60);	//计算分钟后的剩余秒数
+	var s=Math.floor(m_rest/1000);	//计算剩余秒数
+	t = t -1000;
+	a = setTimeout("getRTime()", 1000);
+	
+	if(d>=0 && h>=0 && m>=0 && s>=0){
+		document.getElementById("t_d").innerHTML = d + "天"; 
+		document.getElementById("t_h").innerHTML = h + "时"; 
+		document.getElementById("t_m").innerHTML = m + "分"; 
+		document.getElementById("t_s").innerHTML = s + "秒"; 
+	}else{
+		document.getElementById("CountMsg").innerHTML = "倒计时完成！";
+		clearTimeout(a);
+	}
+} 
+getRTime();
 </script> 
-<li style="width: 300px;">剩余时间： <span id="d2" style="font-weight: bold">0</span> <span> 
-天 </span><span id="h2" style="font-weight: bold">0</span> <span>小时 </span><span id="m2" 
-style="font-weight: bold">0</span> <span>分 </span><span id="s2" style="font-weight: bold"> 
-0</span> <span>秒</span></li> 
-<script type="text/javascript"> 
-tms[tms.length] = "1689353433455"; 
-day[day.length] = "d2"; 
-hour[hour.length] = "h2"; 
-minute[minute.length] = "m2"; 
-second[second.length] = "s2"; 
-</script> 
-</ul> 
-</div> 
 </body> 
-</html> 
+</html>
