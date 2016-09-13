@@ -1,0 +1,134 @@
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>随机球滚动Demo</title>
+		<style type="text/css">
+			body {
+				font-size: 62.5%;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			ul li {
+				list-style: none;
+			}
+			
+			* {
+				border: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.contanier {
+				width: 850px;
+				height: 450px;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				background: rgba(35, 160, 50, .6);
+			}
+			
+			#myCanvas {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="contanier">
+			<canvas id="myCanvas" width="850" height="450"></canvas>
+		</div>
+	</body>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+		var ballList = init();
+		var timer = setInterval(function() {
+				var length = ballList.length;
+				ctx.clearRect(0, 0, 850, 450);
+				for(var i = 0; i < length; i++) {
+					move(ballList[i]);
+					drawBall(ballList[i]);
+				}
+
+			}, 20)
+		function getNum() {
+			return Math.ceil(Math.random() * 50 + 5);
+		}
+
+		function getRdius() {
+			return(Math.random() * 30);
+		}
+
+		function getColor() {
+			return Math.floor(Math.random() * 256);
+		}
+
+		function getSpeed() {
+			return(Math.random() * 5)
+		}
+
+		function getDir() {
+			return Math.round(Math.random());
+		}
+
+		function getBall() {
+			var elem = {};
+			elem.radius = getRdius();
+			elem.color = "rgb(" + getColor() + "," + getColor() + "," + getColor() + ")";
+			elem.moveX = getDir() ? getSpeed() : -(getSpeed());
+			elem.moveY = getDir() ? getSpeed() : -(getSpeed());
+			elem.x = Math.floor(Math.random() * 851);
+			elem.y = Math.floor(Math.random() * 451);
+			return elem;
+		}
+
+		function init() {
+			var num = getNum();
+			var arr = [];
+			for(var i = 0; i < num; i++) {
+				var listItem = getBall();
+				arr.push(listItem);
+			}
+			return arr;
+		}
+
+		function move(ballList) {
+			ballList.x += ballList.moveX;
+			ballList.y += ballList.moveY;
+			var maxX = 850,
+				maxY = 450;
+			if(ballList.x + ballList.radius >= maxX) {
+				ballList.x = maxX - ballList.radius;
+				ballList.moveX = -(ballList.moveX);
+			} else if(ballList.x <= ballList.radius) {
+				ballList.x = ballList.radius;
+				ballList.moveX = -(ballList.moveX);
+			}
+			if(ballList.y + ballList.radius >= 450) {
+				ballList.y = maxY - ballList.radius;
+				ballList.moveY = -(ballList.moveY);
+			} else if(ballList.y <= 0) {
+				ballList.y = ballList.radius;
+				ballList.moveY = -(ballList.moveY);
+			}
+		}
+
+		function drawBall(ballList) {
+			ctx.beginPath();
+			ctx.fillStyle = ballList.color;
+			ctx.arc(ballList.x, ballList.y, ballList.radius, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.closePath();
+		}
+	</script>
+
+</html>
