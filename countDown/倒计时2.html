@@ -1,0 +1,43 @@
+<!doctype html> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+ <title>js setTimeout 倒计时示例</title>
+</head> 
+<body> 
+<DIV id="CountMsg" class="HotDate"> 
+<span id="t_d">00天</span> 
+<span id="t_h">00时</span> 
+<span id="t_m">00分</span> 
+<span id="t_s">00秒</span> 
+</DIV> 
+<script type="text/javascript"> 
+var EndTime= new Date('2016/9/2 11:29:00'); //截止时间 
+var NowTime = new Date(); 	//开始时间
+var t =(EndTime.getTime() - NowTime.getTime())/1000; 	//时间差的毫秒数
+function timeCountdown(){ 
+	var d = Math.floor(t/3600/24); 	//计算出相差天数
+		d = d<10?"0"+d:d;
+	var h=Math.floor((t/3600)%24);	//计算小时
+		h = h<10?"0"+h:h;
+	var m=Math.floor((t/60)%60);	//计算分钟
+		m = m<10?"0"+m:m;
+	var s=Math.floor(t%60);	//计算剩余秒数
+		s= s<10?"0"+s:s
+	t = t -1;
+	a = setTimeout("timeCountdown()", 1000);
+	console.log(t);
+	if(t>0){
+		document.getElementById("t_d").innerHTML = d + "天"; 
+		document.getElementById("t_h").innerHTML = h + "时"; 
+		document.getElementById("t_m").innerHTML = m + "分"; 
+		document.getElementById("t_s").innerHTML = s + "秒"; 
+	}else{
+		document.getElementById("CountMsg").innerHTML = "倒计时完成！";
+		clearTimeout(a);
+	}
+} 
+timeCountdown();
+</script> 
+</body> 
+</html>
