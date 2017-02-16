@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3绘制谷歌logo</title>
+</head>
+<style>
+body{ background:rgba(204,204,204,.2)}
+.box{ width:300px; height:300px; position:absolute; left:0; right:0; top:0; bottom:0; margin:auto; border-radius:100%; box-shadow:0 0 10px rgba(0,0,0,0.1); overflow:hidden; }
+.box::before{ content:""; position:absolute; width:100px; height:100px; background:#4c8bf5; border:10px solid #fff; border-radius:100%; top:0; left:0; bottom:0; right:0; margin:auto; z-index:111}
+.red{ width:300px; height:150px; position:absolute; background:#E65141; top:-50px; left:150px;}
+.red::before{ content:""; position:absolute; width:300px; height:150px; background:#E65141; left:-180px; transform:rotate(-60deg)}
+.green{ background:#4CB749;width:300px; height:150px; position:absolute; transform:rotate(240deg); left:-110px; bottom:10px;}
+.green::before{ content:""; position:absolute; width:300px; height:150px; background:#4CB749; right:136px; transform:rotate(-60deg); bottom:-120px;}
+.yellow{ background:#FCD209;width:300px; height:91px; position:absolute; right:-140px; bottom:118px;}
+.yellow::before{ content:""; position:absolute; width:300px; height:150px; background:#FCD209; right:70px; bottom:-180px;transform:rotate(120deg);}
+
+</style>
+<body>
+<div class="box">
+	<div class="red">
+    </div>
+    <div class="green">
+    </div>
+     <div class="yellow">     	
+    </div>
+</div>
+</body>
+</html>

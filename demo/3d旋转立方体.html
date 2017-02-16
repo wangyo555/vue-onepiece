@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>正方体演示</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html, body{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			position: relative;
+			perspective: 1000px;/*相当于人距显示器1000px看*/
+		}
+		.wrap{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			box-sizing: border-box;
+			width: 300px;
+			height: 300px;
+			margin: -150px;
+			/*transform: translate(-50%,-50%);*//*原来居中方式导致3d旋转失效*/
+			transform-style: preserve-3d;/*增加3d渲染*/
+		}
+		.wrap div{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			line-height: 300px;
+			font-size: 36px;
+			border: 1px solid rgba(0,0,0,0.8);
+			transition: 1s linear;
+		}
+		div.left{
+			-webkit-animation: show1 2s linear 1s forwards;
+		}
+		div.right{
+			-webkit-animation: show2 2s linear 3s forwards;
+		}
+		div.top{
+			-webkit-animation: show3 2s linear 5s forwards;
+		}
+		div.bottom{
+			-webkit-animation: show4 2s linear 7s forwards;
+		}
+		div.front{
+			-webkit-animation: show5 2s linear 9s forwards;
+		}
+		div.back{
+			-webkit-animation: show6 2s linear 11s forwards;
+		}
+		div.wrap{
+			-webkit-animation: rotate 5s linear 13s infinite both;
+		}
+		@keyframes show1{
+			100%{
+				-webkit-transform: rotateY(-90deg) translateZ(150px);
+			}
+		}
+		@keyframes show2{
+			100%{
+				-webkit-transform: rotateY(90deg) translateZ(150px);	
+			}
+		}
+		@keyframes show3{
+			100%{
+				-webkit-transform: rotateX(90deg) translateZ(150px);
+			}
+		}
+		@keyframes show4{
+			100%{
+				-webkit-transform: rotateX(-90deg) translateZ(150px);
+			}
+		}
+		@keyframes show5{
+			100%{
+				-webkit-transform: translateZ(150px);
+			}
+		}
+		@keyframes show6{
+			100%{
+				-webkit-transform: rotateX(180deg) translateZ(150px);
+			}
+		}
+		@keyframes rotate{
+			100%{
+				-webkit-transform:rotate3d(1,1,1,360deg);
+			}
+		}
+		/*div.wrap:hover>div{
+			color: #fff;
+			border-color: rgba(0,0,0,0);
+		}
+		div.wrap:hover .back{
+			background-color: rgba(255,0,0,0.6);
+		}
+		div.wrap:hover .front{
+			background-color: rgba(0,255,0,0.6);
+		}
+		div.wrap:hover .bottom{
+			background-color: rgba(0,0,255,0.6);
+		}
+		div.wrap:hover .top{
+			background-color: rgba(255,255,0,0.6);
+		}
+		div.wrap:hover .right{
+			background-color: rgba(255,0,255,0.6);
+		}
+		div.wrap:hover .left{
+			background-color: rgba(0,255,255,0.6);
+		}*/
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="back">back</div>
+		<div class="front">front</div>
+		<div class="bottom">bottom</div>
+		<div class="top">top</div>
+		<div class="right">right</div>
+		<div class="left">left</div>
+	</div>
+</body>
+</html>
