@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jquery获取元素的各种尺寸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .wrap {
+            width: 800px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+            font: 14px Tahoma, Helvetica, Arial, "宋体";
+            color: #333;
+        }
+        
+        .wrap h2 {
+            margin-bottom: 15px;
+            padding: 10px 2px;
+            border-bottom: 1px solid #ccc;
+            font: 24px Tahoma, Helvetica, Arial, "Microsoft Yahei";
+        }
+        
+        .wrap p {
+            line-height: 24px;
+            margin: 15px 0;
+        }
+        
+        .wrap ul {
+            padding-left: 1.2em;
+            line-height: 24px;
+        }
+        
+        .wrap .table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        
+        .wrap th,
+        .wrap td {
+            padding: 8px 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .dowebok {
+            margin-top: 50px;
+        }
+        
+        #intro {
+            width: 500px;
+            padding: 15px;
+            border: 1px solid #333;
+            margin: 30px;
+        }
+        
+        #pop {
+            display: none;
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            background: brown;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>jQuery获取元素的这种尺寸</h1>
+        <div id="intro" class="dowebok">
+            <h2>简介</h2>
+            <p>电商网站的分类比较明确，比如1楼是手机通讯产品，2楼是家用电器，3楼是服装鞋包等等，旁边还会有一个固定的楼层导航，这个导航列出了所有的楼层，同时还会高亮你正在浏览的楼层，点击其他楼层按钮，又会滚动到其他楼层。这样的导航可以增加用户体验，让购物更加方便快捷。</p>
+            <p>如果你想在自己的页面上也实现这样的效果，那么可以试试 jQuery-One-Page-Nav 这款 jQuery插件，</p>
+            <p>电商网站的分类比较明确，比如1楼是手机通讯产品，2楼是家用电器，3楼是服装鞋包等等，旁边还会有一个固定的楼层导航，这个导航列出了所有的楼层，同时还会高亮你正在浏览的楼层，点击其他楼层按钮，又会滚动到其他楼层。这样的导航可以增加用户体验，让购物更加方便快捷。</p>
+            <p>如果你想在自己的页面上也实现这样的效果，那么可以试试 jQuery-One-Page-Nav 这款 jQuery插件，</p>
+        </div>
+        <div id="usage" class="dowebok">
+            <h2>使用</h2>
+            <p>HTML</p>
+
+            <p>JavaScript</p>
+
+        </div>
+        <div id="options" class="dowebok">
+            <h2>选项</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>属性/方法</th>
+                        <th width="100px">类型</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>currentClass</td>
+                        <td>字符串</td>
+                        <td>'current'</td>
+                        <td>导航高亮的 class</td>
+                    </tr>
+                    <tr>
+                        <td>changeHash</td>
+                        <td>布尔值</td>
+                        <td>false</td>
+                        <td>URL 显示命名锚记（点击导航显示）</td>
+                    </tr>
+                    <tr>
+                        <td>scrollSpeed</td>
+                        <td>整数</td>
+                        <td>750</td>
+                        <td>动画持续时间，以毫秒为单位</td>
+                    </tr>
+                    <tr>
+                        <td>scrollThreshold</td>
+                        <td>整数/浮点数</td>
+                        <td>0.5</td>
+                        <td>下一个处于浏览器可视区域多少比例时导航切换</td>
+                    </tr>
+                    <tr>
+                        <td>filter</td>
+                        <td>字符串</td>
+                        <td>''</td>
+                        <td>过滤不要的项，如 filter: ':not(.external)'</td>
+                    </tr>
+                    <tr>
+                        <td>easing</td>
+                        <td>字符串</td>
+                        <td>'swing'</td>
+                        <td>滚动动画方式</td>
+                    </tr>
+                    <tr>
+                        <td>begin</td>
+                        <td>函数</td>
+                        <td></td>
+                        <td>滚动前的回调函数</td>
+                    </tr>
+                    <tr>
+                        <td>end</td>
+                        <td>函数</td>
+                        <td></td>
+                        <td>滚动后的回调函数</td>
+                    </tr>
+                    <tr>
+                        <td>scrollChange</td>
+                        <td>函数</td>
+                        <td></td>
+                        <td>导航切换后的回调函数</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="examples" class="dowebok">
+            <h2>更多示例</h2>
+            <ul>
+                <li><a href="index2.html">基本演示</a></li>
+                <li><a href="index3.html">过滤链接</a></li>
+                <li><a href="index4.html">显示命名标记</a></li>
+                <li><a href="index5.html">横向导航</a></li>
+                <li><a href="index6.html">回调函数</a></li>
+                <li><a href="index7.html">阿里巴巴</a></li>
+                <li><a href="index8.html">京东</a></li>
+                <li>撑高度</li>
+                <li>撑高度</li>
+                <li>撑高度</li>
+                <li>撑高度</li>
+                <li>撑高度</li>
+            </ul>
+        </div>
+        <div id="recommend" class="dowebok">
+            <h2>其他推荐</h2>
+            <ul>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+                <li><a href="#">This is a list item </a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="pop"></div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--<script>
+        // jquery版获取元素的位置和尺寸
+        $(function() {
+            // window元素的宽高
+            var w_w = $(window).width(),
+                w_h = $(window).height();
+            console.log(w_w + ', ' + w_h);
+
+            // document元素的宽高
+            var d_w = $(document).width(),
+                d_h = $(document).height();
+            console.log(d_w + ', ' + d_h);
+
+            // body元素的宽高
+            var b_w = $('body').width(),
+                b_h = $('body').height();
+            console.log(b_w + ',' + b_h);
+
+            // 获取元素的宽度、加上padding的宽度，加上边框的宽度，加上margin的宽度
+            var intro_w = $('#intro').width(),
+                intro_iw = $('#intro').innerWidth(),
+                intro_ow = $('#intro').outerWidth(),
+                intro_owt = $('#intro').outerWidth(true);
+            console.log(intro_w + ',' + intro_iw + ',' + intro_ow + ',' + intro_owt);
+
+            //窗体滚动高度
+            $(window).on('scroll', function() {
+                var scroll_t = $(window).scrollTop(),
+                    scroll_l = $(window).scrollLeft();
+                console.log('滚动高度：' + scroll_t + ',左侧滚动：' + scroll_l);
+            })
+
+            // 元素距文档顶部的距离和距离左侧的距离
+            var example_st = $('#examples').offset().top,
+                example_sl = $('#examples').offset().left;
+            console.log('元素距离文档顶部和左侧的距离：' + example_st + ',' + example_sl);
+
+            // 测试动态添加指定元素到该元素的位置
+            $('#examples').on('click', 'a', function(e) {
+                e.preventDefault();
+                var off = $(this).offset();
+                // var a_h = $(this).height
+                $('#pop').css({
+                    'top': off.top + 'px',
+                    'left': off.left + $(this).width() + 'px'
+                }).show();
+
+            });
+
+
+            // 元素距父元素顶部和左侧的距离？？？
+            var example_pst = $('#examples').position().top,
+                example_psl = $('#examples').position().left;
+            console.log('元素距离父元素顶部和左侧的距离：' + example_pst + ',' + example_psl);
+        })
+    </script>-->
+
+    <script>
+        // 原生javascript获取元素的尺寸和位置
+        window.onload = function() {
+
+            // 屏幕尺寸
+            var win_w = window.screen.width,
+                win_h = window.screen.height;
+            console.log('屏幕尺寸：' + win_w + ',' + win_h);
+
+            // 可用工作区屏幕尺寸available，去除底部工具栏
+            var win_aw = window.screen.availWidth,
+                win_ah = window.screen.availHeight;
+            console.log('可用工作区屏幕尺寸：' + win_aw + ',' + win_ah);
+
+
+            // 浏览器高度
+            var brow_w = window.innerWidth,
+                brow_h = window.innerHeight;
+            console.log('浏览器窗口尺寸：' + brow_w + ',' + brow_h);
+
+            // 浏览器高度
+            var brow_ow = window.outerWidth,
+                brow_oh = window.outerHeight;
+            console.log('浏览器窗口除去工具栏等尺寸：' + brow_ow + ',' + brow_oh);
+
+
+
+            // client网页可见区域尺寸
+            var body_vw = document.body.clientWidth,
+                body_vh = document.body.clientHeight;
+            console.log('页面client的宽高：' + body_vw + ',' + body_vh);
+
+            // offset网页可见区域尺寸，包括边线的宽和高
+            var body_ow = document.body.offsetWidth,
+                body_oh = document.body.offsetHeight;
+            console.log('页面offset的宽高：' + body_ow + ',' + body_oh);
+
+            // 整个文档的宽高
+            var body_w = document.body.scrollWidth,
+                body_h = document.body.scrollHeight;
+            console.log('整个文档的宽高：' + body_w + ',' + body_h);
+
+            // 滚动条卷去的部分
+            var body_st = document.body.scrollTop,
+                body_sl = document.body.scrollLeft;
+            console.log('网页被卷去的宽高：' + body_st + ',' + body_sl);
+
+
+
+            // 鼠标位置
+            document.onclick = function(e) {
+                // 相对于屏幕左上角
+                console.log('screenx当前坐标：' + e.screenX + ',' + e.screenY);
+
+                // 相对于浏览器左上角
+                console.log('clientx当前坐标：' + e.clientX + ',' + e.clientY);
+
+                // 相对于文档
+                console.log('pagex当前坐标：' + e.pageX + ',' + e.pageY);
+
+                // 相对于触发点所在dom的左上角距离
+                console.log('offsetx当前坐标：' + e.offsetX + ',' + e.offsetY);
+
+            }
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
