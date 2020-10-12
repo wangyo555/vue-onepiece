@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery对表单和表格的操作</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .odd {
+            background: #7d73ff;
+        }
+        
+        .even {
+            background: #fff38f;
+        }
+        
+        .selected {
+            background: orange;
+        }
+        
+        table {
+            width: 500px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h3>Table1</h3>
+        <p><input type="text" placeholder="请输入关键词" id="filtername"></p>
+        <table id="table1">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>居住地</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>李白</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>王维</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>杜甫</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>白居易</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>陆游</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="ck"></td>
+                    <td>杜牧</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Table2</h3>
+        <table id="table2">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>居住地</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>李白</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>王维</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>杜甫</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>白居易</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>陆游</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>杜牧</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Table3</h3>
+        <table id="table3">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>居住地</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent" id="row_01">
+                    <td colspan="4">设计</td>
+                </tr>
+                <tr class="child_row_01">
+                    <td><input type="checkbox"></td>
+                    <td>李白</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr class="child_row_01">
+                    <td><input type="checkbox"></td>
+                    <td>王维</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr class="parent" id="row_02">
+                    <td colspan="4">前端开发</td>
+                </tr>
+                <tr class="child_row_02">
+                    <td><input type="checkbox"></td>
+                    <td>杜甫</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr class="child_row_02">
+                    <td><input type="checkbox"></td>
+                    <td>白居易</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr class="parent" id="row_03">
+                    <td colspan="4">后台开发</td>
+                </tr>
+                <tr class="child_row_03">
+                    <td><input type="checkbox"></td>
+                    <td>陆游</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+                <tr class="child_row_03">
+                    <td><input type="checkbox"></td>
+                    <td>杜牧</td>
+                    <td>男</td>
+                    <td>长安城</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+    <!-- 代码高亮highlight.js插件 -->
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+        $(function() {
+            $('tr:even').addClass('even');
+            // $('tr:odd').addClass('odd');
+            // $('tr:contains("杜甫")').addClass('selected');
+            $('#table1 tbody tr').click(function() {
+                $(this).addClass('selected')
+                    .siblings().removeClass('selected')
+                    // .find(':radio').prop('checked', false)
+                    .end()
+                    .find(':radio').prop('checked', true)
+            });
+
+            $('#table2 tbody>tr').click(function() {
+                var hasSelected = $(this).hasClass('selected');
+                $(this)[hasSelected ? 'removeClass' : 'addClass']('selected')
+                    .find(':checkbox').prop('checked', !hasSelected);
+                // if ($(this).hasClass('selected')) {
+                //     $(this).removeClass('selected')
+                //         .find(':checkbox').prop('checked', false);
+                // } else {
+                //     $(this).addClass('selected')
+                //         .find(':checkbox').prop('checked', true);
+                // }
+            })
+
+            $('#table3 tbody>tr.parent').click(function() {
+                $(this).toggleClass('selected')
+                    .siblings('.child_' + this.id).slideToggle('slow');
+            }).click();
+            $('#filtername').keyup(function() {
+                var keyword = this.value;
+                $('#table1 tbody tr').hide()
+                    .filter(':contains("' + keyword + '")').show();
+            }).blur(function() {
+                $(this).trigger('keyup');
+            });
+
+        })
+    </script>
+</body>
+
+</html>

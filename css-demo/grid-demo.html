@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid栅格实例</title>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+
+<body>
+    <div class="container-12">
+        <div class="grid-8">
+            <h1>CSS高效开发实战</h1>
+            <section class="clearfix">
+                <h2>文字反射效果</h2>
+                <p>使用样式-webkit-box-reflect</p>
+                <p class="text-reflect-base">Hello world!</p>
+                <p class="text-reflect">Hellow world!</p>
+            </section>
+            <section>
+                <h2>字体描边</h2>
+                <p>使用样式-webkit-text-stroke</p>
+                <p class="text-stroke">啊，美丽的祖国！</p>
+            </section>
+            <section>
+                <h2>字体分栏</h2>
+                <div class="column">
+                    <p>夕阳西下,大地沐浴在余辉的彩霞中,人们三三两两地在街道上漫步,晚风徐徐地拂送来一阵阵花木夹杂的幽香,使人心旷神怡,更觉夕阳无限好。</p>
+                    <p>风儿吹走了我一整天的烦恼,我情不自禁地低吟浅唱着。这时给以我的不是痛苦和伤悲,而是一种艺术上的悲感,这份悲感并非悲哀的感觉,它是一种无与伦比而悲壮的心情,当你向西远眺时,那熔金般的烈焰,渐渐的由绚烂归于平淡,那一瞬间,一种温馨的感觉便会从心中油然而生。</p>
+                    <p>一抹殷红色的夕阳照在西山上,湛蓝湛蓝的天空浮动着大块大块的白色云朵,它们在夕阳的辉映下呈现出火焰一般的嫣红,倘若你仔细地看,你会看见那云絮在空中飘动,就像置身于轻纱般的美梦似的,会使你远离烦恼的困扰。</p>
+                </div>
+                <p>处理文字溢出</p>
+                <p class="text-ellipsis" title="这是一行被折叠的文字">这是一行被折叠的文字</p>
+            </section>
+            <section>
+                <h2>使用背景图片的origin和clip属性</h2>
+                <p>background的origin属性效果如下：</p>
+                <div class="clearfix">
+                    <div class="back back1"><span>border-box</span></div>
+                    <div class="back back2"><span>padding-box</span></div>
+                    <div class="back back3"><span>content-box</span></div>
+                </div>
+                <p>background的clip属性效果如下：</p>
+                <div class="clearfix">
+                    <div class="back back4"><span>border-box</span></div>
+                    <div class="back back5"><span>padding-box</span></div>
+                    <div class="back back6"><span>content-box</span></div>
+                </div>
+                <p>渐变背景</p>
+                <div class="bg-radial">赞</div>
+            </section>
+            <section>
+                <h2>border-radius详解</h2>
+                <p>正确的写法是border-radisu: 10px / 10px;</p>
+                <p>分别代表四个角的水平直径和垂直直径。</p>
+                <h2>box-shadow详解</h2>
+                <p>box-shadow: 5px 5px 5px 5px #ccc;</p>
+                <p>后面的参数分别代表：水平偏移、垂直偏移、模糊距离、阴影尺寸。其中阴影尺寸就是阴影外延出去总的长度；阴影的外延长度则是设定值的1/2。</p>
+                <textarea class="textarea">设置textarea的resize属性调整缩放。resize：none不可缩放，其他属性包括horizontal、vertical、none等。</textarea>
+            </section>
+            <section>
+                <h2>keyframe动画效果</h2>
+                <div class="rect-box">
+                    <div class="rect">6</div>
+                </div>
+                <h3>缓动效果库</h3>
+                <p><strong>Hover.css：</strong><a href="http://ianlunn.github.io/Hover/">http://ianlunn.github.io/Hover/</a></p>
+                <p><strong>iHover:</strong><a href="http://gudh.github.io/ihover/dist/index.html">http://gudh.github.io/ihover/dist/index.html</a></p>
+            </section>
+        </div>
+        <div class="grid-4">
+            <ol>
+                <li>
+                    <h3>24小时新闻排行</h3>
+                </li>
+                <li>春眠不觉晓</li>
+                <li>处处闻啼鸟</li>
+                <li>夜来风雨声</li>
+                <li>花落知多少</li>
+                <li><a href="#">锚链接</a></li>
+            </ol>
+            <table>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                </tr>
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                </tr>
+            </table>
+            <input type="text">
+            <p><strong draggable>强调</strong></p>
+            <p><abbr title="DOM">Document Object Model</abbr></p>
+            <blockquote>
+                科技是第一生产力。<sub>生产</sub> 知识是人类进步的阶梯。<sup>阶梯</sup>
+            </blockquote>
+            <mark>科技是第一生产力。</mark>
+            <hr>
+            <small>Good</small>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

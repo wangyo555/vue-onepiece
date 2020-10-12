@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery对表单和表格的操作</title>
+    <link rel="stylesheet" href="/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css" id="cssfile">
+    <style>
+        .odd {
+            background: #7d73ff;
+        }
+        
+        .even {
+            background: #fff38f;
+        }
+        
+        .selected {
+            background: orange;
+        }
+        
+        table {
+            width: 500px;
+            text-align: left;
+        }
+        
+        .zoom {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .selected {
+            background: #999;
+            counter-reset: #f55;
+        }
+        
+        .tab_menu {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .tab_menu li {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        #skin>li {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background: orange;
+            line-height: 20px;
+            text-indent: -99999px;
+            cursor: pointer;
+        }
+        
+        #skin>li:first-child {
+            background: red;
+        }
+        
+        #skin>li:nth-child(2) {
+            background: orange;
+        }
+        
+        #skin>li:nth-child(3) {
+            background: yellow;
+        }
+        
+        #skin>li:last-child {
+            background: green;
+        }
+        
+        li.selected {
+            box-shadow: 0 0 5px inset;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <ul id="skin">
+            <li id="skin_0" title="红色">红色</li>
+            <li id="skin_1" title="橙色">橙色</li>
+            <li id="skin_2" title="黄色">黄色</li>
+            <li id="skin_3" title="绿色">绿色</li>
+        </ul>
+
+        <span class="zoom" id="zoomin">放大</span><span class="zoom" id="zoomout">缩小</span>
+        <div id="para">
+            君不见黄河之水天上来，奔流到海不复回。 君不见高堂明镜悲白发，朝如青丝暮成雪。 人生得意须尽欢，莫使金樽空对月。 天生我材必有用，千金散尽还复来。 烹羊宰牛且为乐，会须一饮三百杯。 岑夫子，丹丘生，将进酒，杯莫停。 与君歌一曲，请君为我侧耳听。 钟鼓馔玉不足贵，但愿长醉不复醒。 古来圣贤皆寂寞，惟有饮者留其名。 陈王昔时宴平乐，斗酒十千恣欢谑。 主人何为言少钱，径须沽取对君酌。 五花马，千金裘， 呼儿将出换美酒，与尔同销万古愁。
+        </div>
+        <div class="tab">
+            <div class="tab_menu">
+                <ul>
+                    <li class="selected">时事</li>
+                    <li>体育</li>
+                    <li>娱乐</li>
+                </ul>
+            </div>
+            <div class="tab_content">
+                <div>时事</div>
+                <div class="hide">体育</div>
+                <div class="hide">娱乐</div>
+            </div>
+        </div>
+        <div id="xy"></div>
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- 代码高亮highlight.js插件 -->
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+        $(function() {
+            // 字体放大缩小
+            $('span').click(function() {
+                var font = $('#para').css('font-size');
+                // console.log(font);
+                var font_num = parseInt(font, 10);
+                var unit = font.slice(-2);
+                if ($(this).is('#zoomin')) {
+                    if (font_num < 24) {
+                        font_num += 2;
+                    }
+                }
+                if ($(this).is('#zoomout')) {
+                    if (font_num > 12) {
+                        font_num -= 2
+                    }
+                }
+                $('#para').css('font-size', font_num + unit);
+            });
+
+            // tab选项卡切换
+            $('.tab_menu ul li').click(function() {
+                $(this).addClass('selected')
+                    .siblings().removeClass('selected');
+                var cur_index = $(this).index();
+                $('.tab_content>div').eq(cur_index).show().siblings().hide();
+            });
+
+            // 皮肤切换
+            function switchSkin(id) {
+                $('#' + id).addClass('selected').siblings().removeClass('selected');
+                $('#cssfile').attr('href', id + '.css');
+                $.cookie('MyCssSkin', id, {
+                    path: '/',
+                    expires: 10
+                });
+            }
+            $('#skin>li').click(function() {
+                switchSkin(this.id);
+            })
+            var cookie_skin = $.cookie('MyCssSkin');
+            if (cookie_skin) {
+                switchSkin(cookie_skin);
+            }
+
+            // 屏蔽页面右键菜单
+            $(document).on('contextmenu', function() {
+                return false;
+            });
+            $(document).mousemove(function(e) {
+                $('#xy').html(`X:${e.pageX}, Y:${e.pageY}`)
+            });
+            $(document).mousedown(function(e) {
+                console.log(`点击的鼠标是：${e.which}`);
+            }).keyup(function(e) {
+                console.log(`按下的键是${e.which}`)
+            })
+
+        })
+    </script>
+</body>
+
+</html>

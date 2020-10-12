@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记不住但常用的CSS样式</title>
+    <style>
+        body,
+        html {
+            position: relative;
+        }
+        /*css主要部分的样式*/
+        /*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+        
+         ::-webkit-scrollbar {
+            width: 10px;
+            /*对垂直流动条有效*/
+            height: 10px;
+            /*对水平流动条有效*/
+        }
+        /*定义滚动条的轨道颜色、内阴影及圆角*/
+        
+         ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: rosybrown;
+            border-radius: 3px;
+        }
+        /*定义滑块颜色、内阴影及圆角*/
+        
+         ::-webkit-scrollbar-thumb {
+            border-radius: 7px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #E8E8E8;
+        }
+        /*定义两端按钮的样式*/
+        
+         ::-webkit-scrollbar-button {
+            background-color: peru;
+        }
+        /*定义右下角汇合处的样式*/
+        
+         ::-webkit-scrollbar-corner {
+            background: khaki;
+        }
+        
+        input::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: red;
+        }
+        
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: red;
+        }
+        
+        input:-ms-input-placeholder {
+            /* IE 10+ */
+            color: red;
+        }
+        
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: red;
+        }
+        
+        input:focus {
+            /*设置input聚焦时的样式*/
+            background-color: lightgreen;
+        }
+        
+        .wraplips {
+            border: 1px solid #ccc;
+            /*文字超出折叠*/
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .mult-wraplips {
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .triangle {
+            /* 纯css画三角形*/
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+        }
+        
+        .center-wrap {
+            height: 800px;
+            background-color: bisque;
+            position: relative;
+        }
+        
+        .center {
+            /*绝对定位居中*/
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+        }
+        
+        table,
+        tr,
+        td {
+            border: 1px solid #333;
+        }
+        
+        td {
+            width: 200px;
+            height: 50px;
+        }
+        
+        table {
+            /*表格边框合并*/
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>设置input的placeholder的字体样式</h2>
+    <pre>
+    input::-webkit-input-placeholder {    /* Chrome/Opera/Safari */
+        color: red;
+    }
+    input::-moz-placeholder { /* Firefox 19+ */  
+        color: red;
+    }
+    input:-ms-input-placeholder { /* IE 10+ */
+        color: red;
+    }
+    input:-moz-placeholder { /* Firefox 18- */
+        color: red;
+    }
+</pre>
+    <p><input type="text" placeholder="请输入你的理想："></p>
+    <hr>
+
+    <h2>隐藏滚动条或滚动条样式</h2>
+    <pre>
+        /*css主要部分的样式*//*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+    width: 10px; /*对垂直流动条有效*/
+    height: 10px; /*对水平流动条有效*/
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: rosybrown;
+    border-radius: 3px;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb{ 
+    border-radius: 7px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #E8E8E8;
+}
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+    background-color:cyan;
+}
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+    background:khaki;
+}
+
+    </pre>
+    <hr>
+    <h2>文字超出隐藏并显示省略号</h2>
+    <h3>单行（一定要有宽度）</h3>
+    <pre>
+        width:200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    </pre>
+    <div class="wraplips">昔时贤文，诲汝谆谆。集韵增广，多见多闻。</div>
+    <h3>多行</h3>
+    <pre>
+        word-break: break-all;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    </pre>
+    <hr>
+    <h2>控制div内的元素自动换行</h2>
+    <pre>
+        word-wrap: break-word;
+        word-break：break-all;
+    </pre>
+    <hr>
+    <h2>纯CSS画三角形</h2>
+    <pre>
+        .triangle {
+            width: 0;
+            height: 0;
+            border-width: 20px;
+            border-style: solid;
+            border-color: transparent transparent red transparent;
+        }
+    </pre>
+    <div class="triangle"></div>
+    <hr>
+    <h2>绝对定位元素居中（水平和垂直方向）</h2>
+    <pre>
+       .center{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-color: green;
+        }
+    </pre>
+    <div class="center-wrap">
+        <div class="center"></div>
+    </div>
+    <hr>
+    <h2>表格边框合并</h2>
+    <pre>
+        table,tr,td{
+            border: 1px solid #333;
+        }
+        table{
+            border-collapse: collapse;
+         }
+    </pre>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+
+</html>

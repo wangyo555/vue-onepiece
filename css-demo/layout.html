@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用页面布局</title>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        section {
+            margin: 15px;
+        }
+        
+        section h2 {
+            margin: 15px 0;
+        }
+        
+        .wrap {
+            overflow: hidden;
+        }
+        
+        .wrap>div {
+            height: 100px;
+        }
+        
+        .wrap .left .inner,
+        .wrap .right .inner,
+        .wrap .middle .inner {
+            height: 100px;
+            padding: 15px;
+        }
+        
+        .wrap .left .inner {
+            background: pink;
+        }
+        
+        .wrap .right .inner {
+            background: orange;
+        }
+        
+        .wrap .middle .inner {
+            background: lightblue;
+        }
+        
+        #sec1 .left {
+            float: left;
+            width: 300px;
+            margin-right: -300px;
+        }
+        
+        #sec1 .right {
+            float: right;
+            width: 100%;
+            margin-left: -300px;
+        }
+        
+        #sec1 .right .inner {
+            margin-left: 300px;
+            height: 100%;
+        }
+        
+        #sec2 .left {
+            float: left;
+            width: 100%;
+        }
+        
+        #sec2 .left .inner {
+            margin-right: 300px;
+        }
+        
+        #sec2 .right {
+            float: right;
+            width: 300px;
+            margin-left: -300px;
+        }
+        
+        #sec3 .left {
+            float: left;
+            width: 70%;
+        }
+        
+        #sec3 .right {
+            float: right;
+            width: 30%;
+        }
+        
+        #sec4 .left {
+            float: left;
+            width: 100%;
+            margin-right: -500px;
+        }
+        
+        #sec4 .left .inner {
+            margin-right: 500px;
+        }
+        
+        #sec4 .right {
+            float: right;
+            width: 300px;
+            /* margin-left: -300px; */
+        }
+        
+        #sec4 .middle {
+            float: right;
+            width: 200px;
+            /* margin-right: -200px; */
+        }
+        
+        #sec5 .left {
+            float: left;
+            width: 300px;
+        }
+        
+        #sec5 .middle {
+            float: left;
+            width: 200px;
+        }
+        
+        #sec5 .right {
+            margin-left: 500px;
+        }
+        
+        #sec6 .left {
+            float: left;
+            width: 200px;
+            margin-right: -200px;
+        }
+        
+        #sec6 .right {
+            float: right;
+            width: 200px;
+            margin-left: -200px;
+        }
+        
+        #sec6 .middle {
+            float: left;
+            width: 100%;
+        }
+        
+        #sec6 .middle .inner {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+        
+        .breadcrumb li {
+            float: left;
+            padding-right: 10px
+        }
+        
+        .breadcrumb li:not(:first-child)::before {
+            display: inline-block;
+            content: '﹥';
+            width: 20px;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="ac">常见页面布局</h1>
+    <section id="sec1">
+        <h2>两列右侧自适应</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧固定</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧自适应</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec2">
+        <h2>两栏左侧自适应</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧自适应</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧固定</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec3">
+        <h2>两栏左右两侧固定</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧固定</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧固定</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec4">
+        <h2>三栏左侧自适应，中间和右侧固定</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧自适应</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧固定</div>
+            </div>
+            <div class="middle">
+                <div class="inner">中间固定</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec5">
+        <h2>三栏右侧自适应，中间和左侧固定</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧固定</div>
+            </div>
+            <div class="middle">
+                <div class="inner">中间固定</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧自适应</div>
+            </div>
+        </div>
+    </section>
+    <section id="sec6">
+        <h2>三栏中间自适应，左侧和右侧固定</h2>
+        <div class="wrap">
+            <div class="left">
+                <div class="inner">左侧固定</div>
+            </div>
+            <div class="middle">
+                <div class="inner">中间自适应</div>
+            </div>
+            <div class="right">
+                <div class="inner">右侧固定</div>
+            </div>
+        </div>
+    </section>
+    <!-- 面包屑导航 -->
+    <section>
+        <h2 class="ac">面包屑导航</h2>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">面包屑</a>
+            </li>
+            <li>
+                <a href="#">文字</a>
+            </li>
+        </ul>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Explaining the Document Object Model</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            width: 960px;
+            margin: 15px auto;
+        }
+        
+        header {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-right: 30px;
+        }
+        
+        dt {
+            font-weight: bold;
+        }
+        
+        dd {
+            margin-left: 15px;
+        }
+        
+        table {
+            width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            table-layout: fixed;
+        }
+        
+        caption {
+            text-align: center;
+        }
+        
+        th {
+            background: #999;
+        }
+        
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+        
+        .strip {
+            background: #fc0;
+        }
+        
+        ol li {
+            list-style: decimal;
+        }
+        
+        ol {
+            margin-left: 15px;
+        }
+        
+        #preview {
+            width: 320px;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #preview img {
+            position: absolute;
+            height: 100%;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="message">Where?</div> -->
+    <h1>Web Design</h1>
+    <p>There are things you should know.</p>
+    <ol>
+        <li><a href="#">Structure</a></li>
+        <li><a href="#">Presentation</a></li>
+        <li><a href="#">Behavior</a></li>
+    </ol>
+    <div id="preview">
+        <img src="img/css_sprites.png" alt="">
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+        addLoadEvent(positionMessage);
+        addLoadEvent(prepareSlider);
+    </script>
+
+</body>
+
+</html>

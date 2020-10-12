@@ -1,0 +1,32 @@
+* {
+	margin:0;padding:0;
+}
+html, body {
+	font-size: 16px;
+	background: url(../img/pattern.svg) no-repeat center /cover;
+	background-attachment: fixed;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clear:before, .clear:after{
+	display: block;
+	content: '';
+	height: 0;
+	visibility: hidden;
+}
+.clear:after{
+	clear: both;
+}
+.wrap{
+	width: 960px;	
+	margin: 0 auto;
+}
+
+.thum{
+	height: 200px;
+	width: 200px;
+}

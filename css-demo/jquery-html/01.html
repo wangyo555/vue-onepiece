@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>认识jQuery</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        
+        .menu li a {
+            display: block;
+            padding: 5px;
+        }
+        
+        .menu {
+            position: relative;
+            left: 10px;
+        }
+        
+        .menu li a:hover {
+            background: #eee;
+            text-decoration: none;
+        }
+        
+        .level1 {
+            width: 200px;
+            border: 1px solid #ccc;
+            background: #f5f5f5;
+        }
+        
+        .level1>a.current {
+            background: beige;
+        }
+        
+        .level2 {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <ul class="menu">
+            <li class="level1">
+                <a href="#">衬衫</a>
+                <ul class="level2">
+                    <li><a href="#">短袖衬衫</a></li>
+                    <li><a href="#">长袖衬衫</a></li>
+                    <li><a href="#">短袖T恤</a></li>
+                    <li><a href="#">长袖T恤</a></li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">卫衣</a>
+                <ul class="level2">
+                    <li><a href="#">开衫卫衣</a></li>
+                    <li><a href="#">套头卫衣</a></li>
+                    <li><a href="#">运动卫衣</a></li>
+                    <li><a href="#">童装卫衣</a></li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">裤子</a>
+                <ul class="level2">
+                    <li><a href="#">短裤</a></li>
+                    <li><a href="#">休闲裤</a></li>
+                    <li><a href="#">牛仔裤</a></li>
+                    <li><a href="#">免烫卡其裤</a></li>
+                </ul>
+            </li>
+        </ul>
+        <label><input type="checkbox" id="agree">同意注册协议</label>
+        <div id="checklist">
+            <label><input type="checkbox" value="1"> 1</label>
+            <label><input type="checkbox" value="2"> 2</label>
+            <label><input type="checkbox" value="3"> 3</label>
+        </div>
+        <div>
+            2
+            <div>
+                3
+            </div>
+            <div>
+                4
+            </div>
+        </div>
+        <p><a href="#" title="超链接的提示" class="tooltip">提示1</a></p>
+        <ul>
+            <li>
+                <a href="/img/moon.jpg" title="moon" class="tooltip"><img src="/img/moon.jpg" alt="Moon"></a>
+            </li>
+        </ul>
+    </div>
+
+    </section>
+    </div>
+    <style>
+        #parent {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            padding: 10px;
+            margin: 30px;
+            background-color: #ccc;
+            border: solid 10px #fbc;
+        }
+        
+        #child {
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            margin: 30px;
+            border: 10px solid #fbc;
+            background-color: #afb;
+        }
+    </style>
+    <div id="parent">
+        <div id="child">
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function() {
+            // 自定义显示连接的提示
+            var x = 10;
+            var y = 20;
+            $('.tooltip').mouseover(function(e) {
+                var tg = event.target;
+                console.log(tg.href, event.type);
+                // var title = $(this).attr('title');
+                this.mytitle = this.title;
+                this.title = '';
+                var imgtitle = this.mytitle ? `<br>${this.mytitle}` : '';
+                // var tooptip = `<div id='tooltip'>${this.mytitle}</div>`;
+                var tooltip = `<div id='tooltip'><img src='${this.href}' alt=${this.mytitle}>${imgtitle}</div>`;
+                $('body').append(tooltip);
+                $('#tooltip').css({
+                    'top': e.pageY + 'px',
+                    'left': e.pageX + 'px',
+                    'position': 'absolute'
+                }).show('fast');
+            }).mouseout(function(e) {
+                $('#tooltip').remove();
+                this.title = this.mytitle;
+            }).mousemove(function(e) {
+                $('#tooltip').css({
+                    'top': (e.pageY + y) + 'px',
+                    'left': (e.pageX + x) + 'px'
+                })
+            })
+
+            //自定义一个快捷方式
+            // var $ = jQuery.noConflict();
+            $('div:first-child').css('background', 'gray')
+            $('.level1:last').css('background', 'purple');
+            $('div:eq(4)').css('color', 'red');
+            // :has判断包含的元素，:contains判断包含的文本
+            $('div:contains(4):not(:first-child)').css('background', 'orange');
+            $('ul:hidden').show();
+
+            // $('div:not(:empty)').css('background', 'orange');
+            console.log(document.getElementsByTagName('div').length);
+
+            // Menu折叠
+            $('.level1>a').click(function() {
+                $(this).addClass('current') // 每个对象写一行，每个操作写一行
+                    .next().show()
+                    .parent().siblings().children('a').removeClass('current')
+                    .next().hide();
+                return false;
+            });
+
+            // checkbox判断
+            $('#agree').click(function() {
+                if ($(this).is(':checked')) {
+                    // 另一种判断：$(this).prop('checked') == true
+                    alert('Welcom to register our site.');
+                }
+            });
+            if (document.getElementById('tt')) {
+                document.getElementById('tt').style.color = 'red';
+            }
+
+            // jquery版获取原生checkbox个数
+            var checkbox_count = 0;
+            $('#checklist :checkbox').click(function() {
+                    if ($(this).is(':checked')) {
+                        checkbox_count++;
+                    } else {
+                        checkbox_count--;
+                    }
+                    console.log(checkbox_count);
+                })
+                /*原生js获取checkbox个数*/
+                // var check_wrap = document.getElementById('checklist');
+                // var checklist = check_wrap.getElementsByTagName('input');
+                // for (var i = 0; i < checklist.length; i++) {
+                //     checklist[i].onclick = function() {
+                //         if (this.checked) {
+                //             checkbox_count++;
+                //         } else {
+                //             checkbox_count--;
+                //         }
+                //     }
+
+            // 各种位置的选择
+            var m_x = $('.menu').offset().left;
+            var mp_x = $('.menu').position().left;
+            var ck_t = $('#checklist').scrollTop();
+            console.log(`offset left is ${m_x}, position left is ${mp_x}, scrollTop is ${ck_t}`);
+
+            console.log('Child offset left is:' + $("#child").offset().left);
+            console.log('Child position left is:' + $("#child").position().left);
+            $('#parent').click(function() {
+                // $(this).fadeOut(2000);
+                // $(this).hide(2000);
+                $(this).slideUp(2000, function() {
+                    console.log('Animation Done!');
+                });
+            })
+
+        })
+    </script>
+</body>
+
+</html>

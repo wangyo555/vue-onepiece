@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery中的事件和动画</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .showbox {
+            width: 960px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+        
+        .show-caption span {
+            display: inline-block;
+            padding: 10px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .show-content {
+            position: relative;
+            width: 860px;
+            height: 300px;
+            margin: 0 auto;
+            /* border: 1px solid #ccc; */
+            overflow: hidden;
+        }
+        
+        .content-list {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            font-size: 0;
+        }
+        
+        .content-list ul li {
+            display: inline-block;
+        }
+        
+        .content-list ul li img {
+            width: 200px;
+            height: auto;
+            margin-right: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="showbox">
+            <div class="show-caption">
+                <span id="current-page"></span>/<span id="total-page"></span>
+                <span class="prev">上一页</span>
+                <span class="next">下一页</span>
+            </div>
+            <div class="show-content">
+                <div class="content-list">
+                    <ul class="clearfix">
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/naruto.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/naruto.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/naruto.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/naruto.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/wukong.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                        <li>
+                            <img src="/img/moon.jpg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <pre>
+            <code>
+                $(function() {
+                    var page = 1;
+                    var i = 4;
+                    var $content_list = $('.content-list');
+                    var $list_item = $('.content-list ul li');
+                    var content_w = $('.show-content').width();
+                    var total_page = Math.ceil($list_item.length / i);
+                    var cur_postion = 0;
+                    $('span.next').click(function() {
+                        if (page == total_page) {
+                            page = 1;
+                        } else {
+                            page++;
+                        }
+                        cur_postion = -((content_w + 20) * (page - 1)) + 'px';
+                        $content_list.stop(true, true).animate({
+                            'left': cur_postion
+                        }, 'slow');
+                        $('#current-page').text(page);
+                    });
+                    $('span.prev').click(function() {
+                        if (page == 1) {
+                            page = total_page;
+                        } else {
+                            page--;
+                        }
+                        cur_postion = -((content_w + 20) * (page - 1)) + 'px';
+                        $content_list.stop(true, true).animate({
+                            'left': cur_postion
+                        }, 'slow')
+                        $('#current-page').text(page);
+                    });
+                    $('#current-page').text(page);
+                    $('#total-page').text(total_page);
+                })
+            </code>
+        </pre>
+
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+    <!-- 代码高亮highlight.js插件 -->
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+        $(function() {
+            var page = 1;
+            var i = 4;
+            var $content_list = $('.content-list');
+            var $list_item = $('.content-list ul li');
+            var content_w = $('.show-content').width();
+            var total_page = Math.ceil($list_item.length / i);
+            var cur_postion = 0;
+            $('span.next').click(function() {
+                if (page == total_page) {
+                    page = 1;
+                } else {
+                    page++;
+                }
+                cur_postion = -((content_w + 20) * (page - 1));
+                $content_list.stop(true, true).animate({
+                    'left': cur_postion
+                }, 'slow');
+                $('#current-page').text(page);
+            });
+            $('span.prev').click(function() {
+                if (page == 1) {
+                    page = total_page;
+                } else {
+                    page--;
+                }
+                cur_postion = -((content_w + 20) * (page - 1));
+                $content_list.stop(true, true).animate({
+                    'left': cur_postion
+                }, 'slow')
+                $('#current-page').text(page);
+            });
+            $('#current-page').text(page);
+            $('#total-page').text(total_page);
+        })
+    </script>
+</body>
+
+</html>

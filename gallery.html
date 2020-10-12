@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Gallery</title>
+		<link rel="stylesheet" type="text/css" href="css/a.css" />
+		<style type="text/css">
+			table{
+				border: 1px solid #ccc;
+			}
+		</style>
+　　　</head> 
+	<body>
+		<div id="myContent">
+			<ul id="list">
+				<li class="dd"><a href="img/cat.jpg">ddddd</a></li>
+				<li class="ddtt"><a href="img/pattern.svg">fff</a></li>
+				<li class="ddtt"><a href="img/pattern.svg">fff</a></li>
+				<li class="dd"><a href="img/pattern.svg">fff</a></li>
+				<li class="dd"><a href="img/pattern.svg">fff</a></li>
+			</ul>
+			<img id="myPic" src="" alt="" />
+			<p id="desc" class="uu">I'm the title!</p>
+			<table>
+				<thead>
+					<tr>
+						<th>head1</th>
+						<th>head1</th>
+						<th>head1</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			
+		</div>
+		
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				
+				//监测网页的关闭和刷新,并做出提醒
+				
+				window.onbeforeunload = function(){
+				var n = window.event.screenX - window.screenLeft;
+				var b = n > document.documentElement.scrollWidth-20;
+				if(b && window.event.clientY < 0 || window.event.altKey){
+				       return confirm("确定关闭吗")
+				   } else {
+				     return confirm("确定刷新吗")
+				    }
+				}
+				
+//				console.log($('.ddtt')[0].className.indexOf('dd'))
+//				console.log($('.dd')[0].className.indexOf('dd'))
+				
+				//classname
+				function getElementByClass(node, classname){
+					if(node.getElementsByClassName(classname)){
+						return node.getElementsByClassName(classname)
+					} else{
+						var result = [];
+						var elems = node.getElementsByTagName('*');
+						for(var i =0; i<elems.length; i++){
+							if(elems[i].className.indexOf(classname) !== -1){
+								result.push(elems[i]);
+								alert(elems[i].className.indexOf(classname));
+							}
+						}
+						return result;
+					}
+				}
+				
+				var list = document.getElementById('list');
+				var list_item = getElementByClass(list, 'dd');
+				console.log('list_item is: '+list_item.length);
+				
+				
+				console.log($('#desc')[0].childNodes[0].nodeType);
+				console.log($('#desc')[0].className);
+				var a = [];
+				a['a'] = 1;
+				a['b'] = 2;
+				console.log(a);
+				var table = document.getElementsByTagName("table")[0];
+				var tr = table.getElementsByTagName('tr');
+				for(var i = 0; i< tr.length; i++){
+					tr[i].onmouseover = function(){
+						this.style.color = '#ff0000';
+					}
+					tr[i].onmouseout = function(){
+						this.style.color = 'inherit';
+					}
+					
+					if(i%2){
+						tr[i].style.background = '#A52A2A';
+					}
+				}
+				
+				
+				$('ul>li>a').click(function(e){
+					var source = this.getAttribute('href');
+					$('#myPic').attr('src',source);
+					return false;
+				})
+			})
+		</script>
+		
+	</body>
+
+</html>

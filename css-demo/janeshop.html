@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JaneShop</title>
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/janeshop.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+
+<body>
+    <div class="container-12">
+        <div id="header">
+            <div class="conWidth">
+                <a href="#nogo" class="logo">
+                    <img src="img/moon.jpg" alt="">
+                </a>
+                <div class="search">
+                    <input type="text" id="inputSearch" class="" value="请输入商品名称">
+                </div>
+                <ul id="skin"></ul>
+                <div class="mainNav" id="nav">
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">品牌</a></li>
+                        <li><a href="#">女装</a></li>
+                        <li><a href="#">男装</a></li>
+                        <li><a href="#">鞋包服饰</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        "use strict";
+        var obj = {
+            name: 'Joe',
+            gender: 'Male',
+            age: '18'
+        }
+        var x;
+        for (x in obj) {
+            if (obj.hasOwnProperty(x)) {
+                console.log(`${x}:${obj[x]}`);
+            }
+        }
+
+        (function(win) {
+            "use strict";
+            var doc = win.document;
+
+            // 在这里定义其他变量
+            // 其他相关代码
+
+        })(window)
+    </script>
+
+
+</body>
+
+</html>

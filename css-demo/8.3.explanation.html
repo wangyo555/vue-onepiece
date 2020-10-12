@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Explaining the Document Object Model</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            width: 960px;
+            margin: 15px auto;
+        }
+        
+        header {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-right: 30px;
+        }
+        
+        dt {
+            font-weight: bold;
+        }
+        
+        dd {
+            margin-left: 15px;
+        }
+        
+        table {
+            width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            table-layout: fixed;
+        }
+        
+        caption {
+            text-align: center;
+        }
+        
+        th {
+            background: #999;
+        }
+        
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+        }
+        
+        .strip {
+            background: #fc0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul id="navigation" class="clearfix">
+                <li><a href="index.html" accesskey="1">Home</a></li>
+                <li><a href="search.html" accesskey="2">Search</a></li>
+                <li><a href="contact.html" accesskey="3">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>What is the Document Object Model?</h1>
+    <p>
+        The <abbr title="World Wide Web Consortium">W3C</abbr> defines the <abbr title="Document Object Model">DOM</abbr> as:
+    </p>
+    <blockquote>
+        <p>This is a test line.</p>
+    </blockquote>
+    <blockquote cite="http://www.w3c.org/DOM/">
+        <p>A plateform and language-neutral interface that will allow programs and scripts to dynamically access and update the content, structure and style of documents.</p>
+    </blockquote>
+    <p>
+        It is an <abbr title="Application Programming Interface">API</abbr> that can be used to navigate <abbr title="Hypertext Markup Language">HTML</abbr> and <abbr title="eXtensible Markup Language">XML</abbr> documents.
+    </p>
+
+    <table>
+        <caption>Itinerary</caption>
+        <thead>
+            <tr>
+                <th>When</th>
+                <th>Where</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tt">
+                <td>June 9th</td>
+                <td>Portland</td>
+            </tr>
+            <tr>
+                <td>June 10th</td>
+                <td>Seattle</td>
+            </tr>
+            <tr>
+                <td>June 12th</td>
+                <td>Sacramento</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="js/script.js"></script>
+    <script>
+        addLoadEvent(displayAbbreviations);
+        addLoadEvent(displayCitations);
+        addLoadEvent(displayAccesskeys);
+        addLoadEvent(stripeTables);
+        addLoadEvent(highlightRows);
+    </script>
+
+</body>
+
+</html>

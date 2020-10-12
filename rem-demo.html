@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>remDemo</title>
+    <link rel="stylesheet" type="text/css" href="css/rem.css"/>
+</head>
+<body>
+    <div class="header">
+        <p>我是header</p>
+    </div>
+    <div class="content">
+        <ul>
+            <li class="item">
+                <div class="item-top">
+                    <img class="top-img" src="http://wx.qlogo.cn/mmopen/v4P2R8A0QbPpy7UcLbicHEKQuWBL7cUD2PupycTlhauvkrGvwpia11cZ7icGses9uNhBCZh49mvmJia61N9Ga6ceYA/0">
+                </div>
+                <div class="item-middle">
+                    <p class="middle-text">这是一段测试文字</p>
+                    <p class="middle-text">段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字</p>
+                </div>
+                <div class="item-buttom">
+                    <span class="like">点赞</span>
+                </div>
+            </li>
+            <li class="item">
+                <div class="item-top">
+                    <img class="top-img" src="http://wx.qlogo.cn/mmopen/v4P2R8A0QbPpy7UcLbicHEKQuWBL7cUD2PupycTlhauvkrGvwpia11cZ7icGses9uNhBCZh49mvmJia61N9Ga6ceYA/0">
+                </div>
+                <div class="item-middle">
+                    <p class="middle-text">这是一段测试文字</p>
+                    <p class="middle-text">段测试文字这是一段测试文字这是一段测试文字这是一段测试文字这是一段测试文字</p>
+                </div>
+                <div class="item-buttom">
+                    <span class="like">点赞</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <!--脚本-->
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    	"use strict";
+    	function a(){}
+		console.log(typeof Function)    	
+		
+		// 监测数组
+		var arr = [1,2,3,4];
+		console.log(Array.isArray(arr), arr instanceof Array)
+		
+		var obj = {
+			count: '1jjkk',
+			plus: ''
+		}
+		Object.seal(obj);
+//		delete obj.count;
+		 obj.plus= 14;
+		 console.log(obj.plus)
+		 console.log(document.getElementsByTagName('jj').length)
+//		 obj.d = 15
+		
+		
+		console.log(obj.hasOwnProperty('count'), 'count' in obj)
+		
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery对表单和表格的操作</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .showbox {
+            width: 940px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+        
+        .show-caption span {
+            display: inline-block;
+            padding: 10px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .show-content {
+            position: relative;
+            width: 860px;
+            /* height: 300px; */
+            margin: 0 auto;
+            /* border: 1px solid #ccc; */
+            overflow: hidden;
+        }
+        
+        .content-list {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            font-size: 0;
+        }
+        
+        .content-list ul li {
+            display: inline-block;
+        }
+        
+        .content-list ul li img {
+            width: 200px;
+            height: auto;
+            margin-right: 20px;
+        }
+        
+        .content-wrap {
+            margin-top: 15px;
+            padding: 15px;
+            overflow: hidden;
+        }
+        
+        .content-wrap .centent {
+            float: left;
+            width: 200px;
+        }
+        
+        .content-wrap span {
+            display: block;
+            margin: 15px 0;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .success {
+            color: green;
+        }
+        
+        .error {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="showbox">
+            <div class="show-caption">
+                <span class="zoomout">缩小-</span>
+                <span class="zoomin">放大+</span>
+            </div>
+            <div class="show-content">
+                <textarea name="comment" id="comment" cols="100" rows="10">
+                        明月几时有，把酒问青天。 
+                        不知天上宫阙，今夕是何年？ 
+                        我欲乘风归去，又恐琼楼玉宇， 
+                        高处不胜寒。 
+                        起舞弄清影，何似在人间！ 
+                        
+                        转朱阁，低绮户，照无眠。 
+                        不应有恨，何事长向别时圆？ 
+                        人有悲欢离合，月有阴晴圆缺， 
+                        此事古难全。 
+                        但愿人长久，千里共婵娟。
+                </textarea>
+            </div>
+            <form id="form">
+                你爱好的运动是什么？<br>
+                <label><input type="checkbox" name="items" value="足球">足球</label>
+                <label><input type="checkbox" name="items" value="篮球">篮球</label>
+                <label><input type="checkbox" name="items" value="羽毛球">羽毛球</label>
+                <label><input type="checkbox" name="items" value="乒乓球">乒乓球</label><br>
+                <input type="button" id="check-all" value="全选">
+                <input type="button" id="check-none" value="全不选">
+                <input type="button" id="check-rev" value="反选">
+                <input type="button" id="send" value="提交"><br>
+                <label><input type="checkbox" class="check-all">全选</label>
+            </form>
+            <div class="content-wrap">
+                <div class="centent">
+                    <select multiple id="select1" style="width: 200px; height: 300px;">
+                                <option value="1">选项1</option>
+                                <option value="2">选项2</option>
+                                <option value="3">选项3</option>
+                                <option value="4">选项4</option>
+                                <option value="5">选项5</option>
+                                <option value="6">选项6</option>
+                                <option value="7">选项7</option>
+                                <option value="8">选项8</option>
+                            </select>
+                    <div>
+                        <span id="add">选中添加到右边>></span>
+                        <span id="add_all">全部添加到右边>></span>
+                    </div>
+                </div>
+                <div class="centent">
+                    <select multiple id="select2" style="width: 200px; height: 300px;"></select>
+                    <div>
+                        <span id="remove">选中删除到左边>></span>
+                        <span id="remove_all">全部删除到左边>></span>
+                    </div>
+                </div>
+            </div>
+            <form id="validate" action="" method="post">
+                <div class="ini">
+                    <label for="username">用户名：</label>
+                    <input type="text" id="username" class="required">
+                </div>
+                <div class="ini">
+                    <label for="email">邮箱：</label>
+                    <input type="text" id="email" class="required">
+                </div>
+                <div class="ini">
+                    <label for="personinfo">个人资料：</label>
+                    <input type="text" id="personinfo">
+                </div>
+                <div class="sub">
+                    <input type="button" value="提交" id="smt">
+                    <input type="reset" value="重置" id="reset">
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script src="../js/script.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet">
+    <!-- 代码高亮highlight.js插件 -->
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script>
+        $(function() {
+            // 调整评论框的高度
+            var $comment = $('#comment');
+            $('.zoomin').click(function() {
+                if ($comment.height() > 500) return false;
+                $comment.stop().animate({
+                    'height': '+=50'
+                }, 500);
+            });
+            $('.zoomout').click(function() {
+                if ($comment.height() < 100) return false;
+                $comment.stop().animate({
+                    'height': '-=50'
+                }, 500)
+            });
+
+            // 全选和反选
+            var $checkbox = $('[name=items]:checkbox');
+            // 全选
+            $('#check-all').click(function() {
+                $checkbox.prop('checked', true);
+                $('.check-all').prop('checked', true);
+            });
+            // 全不选
+            $('#check-none').click(function() {
+                $checkbox.prop('checked', false);
+                $('.check-all').prop('checked', false);
+            });
+            // 反选
+            $('#check-rev').click(function() {
+                $checkbox.each(function() {
+                    $(this).prop('checked', !this.checked);
+                })
+            });
+            // 提交
+            $('#send').click(function() {
+                var sports = [];
+                $checkbox.filter(':checked').each(function() {
+                    sports.push(this.value);
+                })
+                alert(`您选择的运动项目是：${sports.join(' | ')}`);
+            });
+            // 侦测是否全部选中，同时设定全选的按钮是否选中
+            $('.check-all').click(function() {
+                $checkbox.prop('checked', this.checked);
+            });
+            $checkbox.click(function() {
+                if (!this.checked) {
+                    $('.check-all').prop('checked', false);
+                }
+                if ($checkbox.length == $checkbox.filter(':checked').length) {
+                    $('.check-all').prop('checked', true);
+                }
+            })
+
+            // 多选框相互添加和移除
+            $('#add').click(function() {
+                $('#select1 option:selected').appendTo('#select2');
+            });
+            $('#add_all').click(function() {
+                $('#select1 option').appendTo('#select2');
+            });
+            $('#remove').click(function() {
+                $('#select2 option:selected').appendTo('#select1');
+            });
+            $('#remove_all').click(function() {
+                $('#select2 option').appendTo('#select1');
+            });
+            $('#select1').dblclick(function() {
+                $(this).find(':selected').appendTo('#select2');
+                // $('option:selected', this).appendTo('#select2');
+            });
+            $('#select2').dblclick(function() {
+                $(this).find(':selected').appendTo('#select1');
+                // $('option:selected', this).appendTo('#select2');
+            });
+
+
+            // 表单校验
+            var $required = $('<strong class="high" style="color:red">*必填项</strong>');
+            var $ok = $('<strong class="formtips success">OK</strong>');
+            $('form :input').blur(function() {
+                var $parent = $(this).parent();
+                $parent.find('.formtips').remove();
+                if ($(this).is('#username')) {
+                    if (this.value == '' || this.value.length < 6) {
+                        $parent.append('<strong class="formtips error">用户名为空或小于6位</strong>');
+                    } else {
+                        $parent.append('<strong class="formtips success">OK</strong>');
+                    }
+                }
+                if ($(this).is('#email')) {
+                    if (this.value == '' || (this.value != '' && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))) {
+                        $parent.append('<strong class="formtips error">请填写正确的邮箱地址</strong>');
+                    } else {
+                        $parent.append('<strong class="formtips success">OK</strong>');
+                    }
+                }
+                // $parent.append($required);
+            }).keyup(function() {
+                $(this).triggerHandler('blur');
+            }).focus(function() {
+                $(this).triggerHandler('blur');
+            });
+            $('#smt').click(function() {
+                $('form :input.required').trigger('blur');
+                if ($('form .error').length) {
+                    return false;
+                }
+                alert('提交成功！');
+            });
+
+
+        })
+    </script>
+</body>
+
+</html>

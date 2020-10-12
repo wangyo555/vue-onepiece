@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            width: 960px;
+            margin: 15px auto;
+        }
+        
+        ul li {
+            float: left;
+            margin: 1em 1.5em;
+        }
+        
+        ul li:first-child {
+            margin-left: 0;
+        }
+        
+        img {
+            display: block;
+        }
+        
+        .placeholder {
+            margin-bottom: 15px;
+            width: 320px;
+            height: 240px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Snapshots</h1>
+    <ul id="imagegallery" class="clearfix">
+        <li><a href="img/wukong.jpg" title="Wukong">Wukong</a></li>
+        <li><a href="img/moon.jpg" title="Moon">Moon</a></li>
+        <li><a href="img/harvest.jpg" title="Harvest">Harvest</a></li>
+        <li><a href="img/naruto.jpg" title="Naruto">Naruto</a></li>
+        <li><a href="img/bg1.jpg">Test</a></li>
+
+    </ul>
+    <!-- <img id="placeholder" class="placeholder" src="img/placeholder.jpg" alt="my image gallery">
+    <p id="description" class="description">Choose an image.</p> -->
+
+    <script src="js/script.js"></script>
+    <script>
+        addLoadEvent(preparePlaceholder);
+        addLoadEvent(prepareGallery);
+        addLoadEvent(displayAbbreviations);
+    </script>
+</body>
+
+</html>

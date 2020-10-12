@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CSS之Float</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <style type="text/css">
+        .content {
+            padding: 15px;
+        }
+        
+        .colorbox {
+            width: 200px;
+            height: 50px;
+            color: #fff;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid brown;
+        }
+        
+        #floatA {
+            border: 1px solid red;
+            background: red;
+        }
+        
+        #floatB {
+            border: 1px dotted blue;
+            background: black;
+        }
+        
+        p {
+            margin-top: 15px;
+        }
+        
+        .mt {
+            margin-top: 30px !important;
+        }
+        
+        .mb {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <p class="content">
+            <img class="thum fr content" src="img/cat.jpg" alt="cat with glass" />上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣
+            ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。
+            <br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣
+            ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。
+            <br>
+        </p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣
+            ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。
+            <br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名。<br>上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之──不笑，不足以为道。故建言有之：明道若昧，进道若退，夷道若颣 ，上德若谷，大白若辱，广德若不足，建德若偷，质直若渝，大方无隅，大器晚成，大音希声，大象无形──道隐无名</p>
+
+        <div class="clear" style="border: 1px solid orange;">
+            <div id="floatA" class="colorbox fl">浮动块1</div>
+            <div id="floatB" class="colorbox fl">浮动块2</div>
+            <div id="floatA" class="colorbox fl">浮动块3</div>
+            <div id="floatA" class="colorbox fl" style="height: 100px;">浮动块5</div>
+            <div id="floatB" class="colorbox fl">浮动块4</div>
+            <div id="floatB" class="colorbox fl">浮动块6</div>
+            <div id="floatA" class="colorbox fl">浮动块7</div>
+            <div id="floatB" class="colorbox fl">浮动块8</div>
+            <div id="floatA" class="colorbox fl">浮动块9</div>
+            <div id="floatB" class="colorbox fl">浮动块10</div>
+        </div>
+        <div class="mbox">
+            <div class="mb colorbox">a</div>
+            <div class="mt colorbox">
+                <p>dslkfja</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a = {
+            name: 'N88',
+            age: 32
+        }
+        var date = new Date();
+
+        console.log(date + a.toString())
+    </script>
+</body>
+
+</html>

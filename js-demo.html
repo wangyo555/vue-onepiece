@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>这是一个js测试文件</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        body {
+            color: white;
+            background: black;
+        }
+        
+        #purchase {
+            background: #333;
+            color: #ccc;
+            padding: 1.5em;
+        }
+        
+        #purchase li {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>JS Test!!!</h1>
+
+    <h1>What to buy</h1>
+    <p title="a gentle reminder">Don't forget to but this stuff.</p>
+    <ul id="purchase">
+        <li>A tin of beans</li>
+        <li class="sale">Cheese</li>
+        <li class="sale important">Milk</li>
+    </ul>
+    <script>
+        console.log(typeof document.getElementsByTagName('*'))
+    </script>
+    <script type="text/javascript">
+        var str = 'This is a \u03a3!';
+
+        $('body').append(str);
+        // console.log(str.length);
+        //console.log(Number(null)); // 0
+        //console.log(typeof(null)); // object
+        //console.log(typeof(undefined)); // undefined
+
+        var color = 'blue';
+
+        function changeColor() {
+            if (color === 'blue') {
+                color = 'red';
+            } else {
+                color = 'blue';
+            }
+        }
+        changeColor();
+        console.log(color);
+
+        function info(args) {
+            var output = '';
+            if (typeof args.name === 'string') {
+                output += 'name: ' + args.name + '\n';
+            }
+            if (typeof args.age === 'number') {
+                output += 'age: ' + args.age + '\n';
+            }
+
+            $('body').append('\r' + output);
+        }
+        info({
+            'name': 'Mike',
+            'age': 28
+        })
+
+        var car = Array('a', 'b', 'c');
+        car[car.length] = 'd';
+        car[car.length] = 'e';
+        $('body').append(car);
+
+        var n = Array(4290000000);
+        console.log(n instanceof Object);
+    </script>
+</body>
+
+</html>
